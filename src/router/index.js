@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '../views/HomePage.vue'
 
 Vue.use(VueRouter)
 
@@ -11,12 +11,29 @@ Vue.use(VueRouter)
     component: Home
   },
   {
-    path: '/about',
+    path: '/aboutus',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import( '../views/AboutPage.vue')
+  },
+  {
+    path: '/calender',
+    name: 'calender',
+    component: () => import('../views/CalenderPage.vue')
+  },
+  {
+    path: '/map',
+    name: 'map',
+    component: () => import('../views/MapPage.vue')
+  },
+  {
+    path: '/graph',
+    name: 'graph',
+    component: () => import( '../views/Weather_graphPage.vue')
+  },
+  {
+    path: '/table',
+    name: 'table',
+    component: () => import( '../views/Weather_tablePage.vue')
   }
 ]
 

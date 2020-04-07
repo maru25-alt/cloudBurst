@@ -1,0 +1,26 @@
+@import './config';
+@import './navigation';
+
+body{
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 10vh;
+    align-items: center;
+    flex-direction: column;
+
+    .footer-logo{
+        display: block;
+        // border: solid 1px #000;
+
+    }
+}
