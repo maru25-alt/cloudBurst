@@ -40,6 +40,10 @@
   color: #0D9BA8;
 }
 
+.navigation .navbar .link-items .link:hover {
+  opacity: 0.5;
+}
+
 .navigation .nav_date {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -49,6 +53,198 @@
           justify-content: center;
 }
 
+.home {
+  border: 1px solid red;
+  margin-top: 5%;
+  background-color: #00001A;
+}
+
+.home .content_container {
+  margin: 2%;
+}
+
+.home .content_container .icon {
+  color: #FFB961;
+  font-size: 1.5em;
+}
+
+.home .content_container .degree {
+  color: #FA0707;
+}
+
+.home .content_container .today_container .today {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 2em;
+  color: #fff;
+  border: 1px solid #e3e3e3;
+}
+
+.home .content_container .today_container .today .today_date {
+  color: #fff;
+  margin-bottom: 1.5em;
+}
+
+.home .content_container .today_container .today .today-temp {
+  margin-bottom: 1.5em;
+}
+
+.home .content_container .entire_week_container {
+  width: 100%;
+}
+
+.home .content_container .entire_week_container .entire_week {
+  border: 1px solid #e3e3e3;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: " . body body body body body body " " . body body body body body body " "header body body body body body body" "header body body body body body body";
+  margin-top: 2em;
+  color: #fff;
+}
+
+.home .content_container .entire_week_container .entire_week > div {
+  padding: 0.5em;
+}
+
+.home .content_container .entire_week_container .week-temp {
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: header;
+}
+
+.home .content_container .entire_week_container .week-temp div h6 {
+  font-size: 1.2em;
+}
+
+.home .content_container .entire_week_container .whole-week {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 4;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 6;
+  grid-area: body;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto auto auto auto;
+      grid-template-columns: auto auto auto auto auto auto;
+}
+
+.home .content_container .entire_week_container .whole-week .week_day > div {
+  padding: 1em;
+}
+
+.home .content_container .entire_week_container .whole-week .icon_container {
+  padding: 0em;
+}
+
+.about {
+  background-color: #00001A;
+  height: 80vh;
+  width: 100%;
+  font-size: 16;
+}
+
+.about h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.about h3 {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.about h4 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.about h5 {
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.about p {
+  font-size: 0.7em;
+}
+
+.about .about_container {
+  margin: 2em;
+  padding: 2em 0;
+}
+
+.about .about_container .about_section {
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 71%, 0% 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 71%, 0% 100%);
+  background-color: #fff;
+  margin-left: 1em;
+  height: 70vh;
+}
+
+.about .about_container .about_section .about_bar {
+  background-color: #0D9BA8;
+  padding: 0.5em;
+  margin: 1em 0;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.about .about_container .about_form {
+  background-color: #fff;
+  height: 50vh;
+  margin-left: 5em;
+}
+
+.about .about_container .about_form .button {
+  background-color: #0D9BA8;
+  color: #fff;
+}
+
+.about .about_container .about_form .button:hover {
+  opacity: 0.5;
+}
+
+.about .about_container .about_form ul li {
+  list-style: none;
+}
+
+.about .about_container .about_form .social-icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.about .about_container .about_form .social-icons li a {
+  color: #0D9BA8;
+  padding-right: 1em;
+}
+
+.about .about_container .about_form .social-icons li a:hover {
+  opacity: 0.5;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -56,8 +252,9 @@ body {
 }
 
 .footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
+  margin-top: 5%;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;

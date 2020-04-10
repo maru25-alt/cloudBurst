@@ -1,5 +1,7 @@
 @import './config';
 @import './navigation';
+@import './home';
+@import './about';
 
 body{
     padding: 0;
@@ -8,8 +10,9 @@ body{
 }
 
 .footer{
-    position: absolute;
+    position: relative;
     bottom: 0;
+    margin-top: 5%;
     
     width: 100%;
     display: flex;
