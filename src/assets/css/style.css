@@ -245,6 +245,39 @@
   opacity: 0.5;
 }
 
+svg {
+  background: #08efffb9;
+}
+
+.country {
+  fill: #252424;
+  stroke: #e3e3e3;
+  stroke-width: 0.5;
+}
+
+.selected {
+  fill: red;
+}
+
+.country-label {
+  color: #fff;
+  font-size: 0.5em;
+  fill: #FFB961;
+}
+
+.city-circle {
+  fill: #FFB961;
+  stroke: red;
+}
+
+.temperature-label {
+  fill: #fff;
+  font-size: 0.7em;
+  border: 1em solid red;
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+}
+
 body {
   padding: 0;
   margin: 0;
