@@ -1,0 +1,50 @@
+.options-container{
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: center;
+
+
+
+
+
+    .weather-items{
+        padding: 0.5em;
+        margin-right: 1em;
+        border: none;
+        color: #fff;
+        &:hover{
+            opacity: 0.5;
+        }
+
+
+
+        
+     }
+     .avg-precipitation{
+        background-color: lightgreen;
+    }
+    .max-temp{
+        background-color: orange;
+
+    }  
+    
+    .min-temp{
+        background-color: lightblue;
+    }
+   
+    .avg-humidity{
+        background-color: rgb(236, 20, 20);
+    }
+
+    .avg-wind{
+        background-color: gray;
+    }
+
+}
+
+.gtext{
+     fill: #000;
+     background: red;
+     color: #000;
+}

@@ -1,9 +1,15 @@
 <template>
-  <div>
-    <svg :width="width" :height='height' >
+  <div class="map-container">
+      <div class="btn-group-vertical" role="group" aria-label="..." id="float-button-group">
+                <button @click="zoomIn" type="button" class="btn btn-default" id="zoom-in"><i class="fas fa-search-plus"></i></button>
+                <button type="button" class="btn btn-default" id="zoom-out"><i class="fas fa-search-minus"></i></button>
+                <button type="button" class="btn btn-default" id="reset"><i class="fas fa-redo-alt"></i></button>
+      </div>
+    <svg class="map-container" :width="width" :height='height' >
       
      
     </svg>
+   <!-- hey {{selectedValue}} -->
     
   </div>
 </template>
@@ -15,9 +21,11 @@ import * as topojson from 'topojson-client'
 import { geoMercator } from 'd3'
 import {loadAndProcessData} from './loadAndProcessData.js'
 export default {
+  props : ['selectedValue'],
   data() {
     return {
       countries: {},
+      states: {},
       height: 500,
       width: 960,
       margin: {
@@ -28,11 +36,37 @@ export default {
        }
     }
   },
-  methods:{
-     render(data, countries){
+  watch:{
+    selectedValue: function(){
+      console.log('i have changed', this.selectedValue)
+      // if (this.selectedValue===temperature)
+      // {
+      //   return ` Max ${d.maxtemp} Min ${d.mintemp}`;
+      // }
+      this.render(this.countries, this.states)
 
-       console.log(data)
+
+
+    }
+  },
+  methods:{
+
+    zoomed(){
+        g.attr("transform", d3.event.transform);
+    },
+
+    zoomIn(){
+       console.log('clicked')
+    },
+    
+     render(data, countries){
+      
+
+      let selectedValue = this.selectedValue
+       //console.log(data)
        const svg = d3.select('svg')
+
+    const g = svg.append('g')
        .append('g')
        .attr('transform', `translate( ${this.margin.left}, ${this.margin.rigth})`);
        
@@ -41,7 +75,7 @@ export default {
        const path = geo.geoPath().projection(projection);
 
 
-       svg.selectAll('.country')
+       g.selectAll('.country')
        .data(data)
        .enter().append('path')
        .attr('class', 'country')
@@ -53,14 +87,14 @@ export default {
           d3.select(this).classed("selected", false)
        });
 
-       svg.selectAll('.city-circle')
+       g.selectAll('.city-circle')
        .attr('class', 'city-circle')
        .data(countries)
        .enter().append('circle')
        .attr('r', 2)
        .attr('cx', function(d) {
          var coords = projection([d.longitude, d.latitude])
-         console.log(coords);
+        // console.log(coords);
          return coords[0];
          
        })
@@ -68,15 +102,38 @@ export default {
          var coords = projection([d.longitude, d.latitude])
          return coords[1];
        })
-       
+       svg.call(d3.zoom()
+       .on('zoom', () => {
+       g.attr('transform', d3.event.transform);
+       }));
 
-       svg.selectAll("country-label")
+      function zoomed() {
+           g.attr("transform", d3.event.transform);
+      }
+
+    let zoom = d3.zoom().on("zoom", zoomed);
+     //svg.call(this.zoomFunc)
+     d3.select('#zoom-in').on('click', function(){
+       console.log('clicked')
+       zoom.scaleBy(svg.transition().duration(750), 1.2)
+     })
+
+     d3.select('#zoom-out').on('click', function(){
+       console.log('zoom out')
+       zoom.scaleBy(svg.transition().duration(750), 0.8)
+     })
+      
+      d3.select('#reset').on('click', function () {
+         zoom.scale(1);
+      })
+
+       g.selectAll("country-label")
        .data(countries)
        .enter().append("text")
        .attr('class','country-label')
        .attr('x', function(d) {
          var coords = projection([d.longitude, d.latitude])
-         console.log(coords);
+         //console.log(coords);
          return coords[0];
          
        })
@@ -89,15 +146,15 @@ export default {
        })
 
 
+console.log(selectedValue, 'hiey')
 
-
-svg.selectAll("temperature-label")
+g.selectAll("temperature-label")
        .data(countries)
        .enter().append("text")
        .attr('class','temperature-label')
        .attr('x', function(d) {
          var coords = projection([d.longitude, d.latitude])
-         console.log(coords);
+         //console.log(coords);
          return coords[0];
          
        })
@@ -106,7 +163,22 @@ svg.selectAll("temperature-label")
          return coords[1];
        })
        .text(function(d){
-         return ` Max ${d.maxtemp} Min ${d.mintemp}`;
+         if(selectedValue === 'humidity'){
+           return `Humidity ${d.humidity}`;
+         }
+        else if(selectedValue === 'wind'){
+          return `Wind Speed  ${d.wind}`;
+        }
+
+        else if(selectedValue === 'temperature'){
+           return ` Max ${d.maxtemp} Min ${d.mintemp}`;
+        }
+
+        else {
+          return null;
+        }
+         console.log(selectedValue, 'hie')
+       
        })
 
 
@@ -122,19 +194,21 @@ svg.selectAll("temperature-label")
     ]).then((data) => {
          
           let countries = data[1];
-           console.log(countries);
+          this.states = countries
+           console.log(this.states);
           this.countries = topojson.feature(data[0], data[0].objects.countries).features;
           //console.log(this.countries)
-          this.render(this.countries,countries );
+          this.render(this.countries,this.states );
         })
      
     
-
+ console.log(this.selectedValue)
     
   
   }
 
 }
+
 </script>
 
 <style scoped>

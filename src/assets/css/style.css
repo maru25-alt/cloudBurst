@@ -245,7 +245,7 @@
   opacity: 0.5;
 }
 
-svg {
+.map-container {
   background: #08efffb9;
 }
 
@@ -276,6 +276,165 @@ svg {
   border: 1em solid red;
   -webkit-transform: translateY(10px);
           transform: translateY(10px);
+}
+
+.onoffswitch {
+  position: relative;
+  width: 90px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+  display: none;
+}
+
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #999999;
+  border-radius: 20px;
+}
+
+.onoffswitch-inner {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  -webkit-transition: margin 0.3s ease-in 0s;
+  transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 30px;
+  padding: 0;
+  line-height: 30px;
+  font-size: 14px;
+  color: white;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: bold;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+  content: "ON";
+  padding-left: 10px;
+  background-color: #34A7C1;
+  color: #FFFFFF;
+}
+
+.onoffswitch-inner:after {
+  content: "OFF";
+  padding-right: 10px;
+  background-color: #EEEEEE;
+  color: #999999;
+  text-align: right;
+}
+
+.onoffswitch-switch {
+  display: block;
+  width: 18px;
+  margin: 6px;
+  background: #FFFFFF;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 56px;
+  border: 2px solid #999999;
+  border-radius: 20px;
+  -webkit-transition: all 0.3s ease-in 0s;
+  transition: all 0.3s ease-in 0s;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  right: 0px;
+}
+
+#wind_option {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: inline-block;
+}
+
+.options {
+  border: 1px solid #000;
+  margin-left: 2%;
+  height: 100%;
+}
+
+.options .row {
+  margin-top: 5%;
+  margin-left: 1%;
+}
+
+.options .row .list-group .active {
+  background-color: #0D9BA8;
+}
+
+.map-container {
+  position: relative;
+}
+
+.map-container .btn-group-vertical {
+  position: absolute;
+}
+
+.map-container .btn-group-vertical button {
+  background-color: aliceblue;
+}
+
+.options-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.options-container .weather-items {
+  padding: 0.5em;
+  margin-right: 1em;
+  border: none;
+  color: #fff;
+}
+
+.options-container .weather-items:hover {
+  opacity: 0.5;
+}
+
+.options-container .avg-precipitation {
+  background-color: lightgreen;
+}
+
+.options-container .max-temp {
+  background-color: orange;
+}
+
+.options-container .min-temp {
+  background-color: lightblue;
+}
+
+.options-container .avg-humidity {
+  background-color: #ec1414;
+}
+
+.options-container .avg-wind {
+  background-color: gray;
 }
 
 body {

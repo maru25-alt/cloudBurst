@@ -1,11 +1,12 @@
 <template>
     <div class="row">
-        <div class="col-md-2 col-sm-4">
-            <Options />
+        <div class="col-md-3 col-sm-4">
+            <Options  v-on:handleCheck='handleChild' />
         </div>
-        <div class="col-md-8 col-sm-6">
-              <Map />
+        <div class="col-md-9 col-sm-8">
+              <Map   :selectedValue="selected"/>
         </div>
+       
       
     </div>
 </template>
@@ -17,7 +18,20 @@ export default {
     components:{
         Map,
         Options
-    }
+    },
+    data() {
+       return{
+           selected : ''
+       }
+
+    },
+    methods: {
+        handleChild(value){
+            this.selected = value
+            //console.log('value', value)
+        }
+    
+    },
 
 }
 </script>
